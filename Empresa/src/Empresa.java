@@ -25,29 +25,31 @@ public class Empresa {
     //METODOS
 
     //AÑADIR EMPLEADO
-    public void añadirEmpleado(Empleado empleado) {
-
+    public boolean añadirEmpleado(Empleado empleado) {
         int i=0;
-        while(this.empleados.length>i){
-            if(this.empleados[i]==null){
-                this.empleados[i]= empleado;
-               i=this.empleados.length;
-                System.out.println("Empleado añadido posicion"+ i);
-            }
+
+        while(i<empleados.length && this.empleados[i]!=null){
             i++;
         }
+        if(i<empleados.length){
+            this.empleados[i]=empleado;
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     //NUMERO EMPLEADOS
     public int numEmpleados() {
         int contador=0;
-        int i=0;
-        while(this.empleados.length>i){
-            if(this.empleados[i]!=null){
-                   contador++;
+
+        for(Empleado e:empleados){
+            if(e!=null){
+                contador++;
             }
-            i++;
         }
+
         return contador;
     }
 
@@ -63,7 +65,7 @@ public class Empresa {
         }
     }
 
-    //MUESTRA POR SALARIO
+    //MUESTRA EMPLEADOS POR SALARIO MAYOR
     public void filtrarEmpleados(double salario) {
         int i=0;
         while(this.empleados.length>i){
@@ -74,6 +76,7 @@ public class Empresa {
         }
     }
 
+    //EMPLEADO SALARIO MAX, MIN Y MEDIA
     public void salarioMaxMinMedio() {
         double mayor=Double.MIN_VALUE;
         double menor=Double.MAX_VALUE;
@@ -94,62 +97,86 @@ public class Empresa {
         System.out.println("Mayor: "+mayor+" Menosr: "+menor+" Media: "+media);
     }
 
+    //EMPLEADO SALARIO MAXIMO
     public Empleado empleadoSlarioMax() {
-        double mayor=Double.MIN_VALUE;
-        int posicion = -1;
+
+        /*double mayor=Double.MIN_VALUE;
+        boolean condicion=false;
+        int posicion = 0;
 
         for(int i=0 ;this.empleados.length>i;i++){
-
             if(this.empleados[i]!=null){
                 if(this.empleados[i].getSalario()>mayor){
                     mayor=this.empleados[i].getSalario();
+                    condicion=true;
                     posicion=i;
                 }
             }
         }
-        if(posicion==-1){
-            return null;
-        }else{
+        if(condicion){
             return this.empleados[posicion];
+        }else{
+            return null;
         }
+        */
+
+        Empleado eMaxSalario = null;
+        double mayorSalario = Double.MIN_VALUE;
+        for (Empleado e:empleados){
+            if(e!=null && e.getSalario()>mayorSalario){
+                mayorSalario=e.getSalario();
+                eMaxSalario = e;
+            }
+        }
+        return eMaxSalario;
     }
 
+    //EMPLEADO SALARIO MINIMO
     public Empleado empleadoSlarioMin() {
         double menor=Double.MAX_VALUE;
-        int posicion = -1;
+        boolean condicion=false;
+        int posicion = 0;
+
         for(int i=0 ;this.empleados.length>i;i++){
             if(this.empleados[i]!=null){
                 if(this.empleados[i].getSalario()<menor){
                     menor=this.empleados[i].getSalario();
+                    condicion=true;
                     posicion=i;
                 }
             }
         }
-        if(posicion==-1){
-            return null;
-        }else{
+        if(condicion){
             return this.empleados[posicion];
+        }else{
+            return null;
         }
     }
+    //AUMENTO SALARIO
     public void aumnetoSalario(double incremento){
         for(int i=0 ;this.empleados.length>i;i++){
             if(this.empleados[i]!=null){
-                this.empleados[i].setSalario(((this.empleados[i].getSalario()/100)*incremento)+this.empleados[i].getSalario());
-                System.out.println(this.empleados[i]);
+                double nuevosalario = ((this.empleados[i].getSalario()/100)*incremento)+this.empleados[i].getSalario();
+                this.empleados[i].setSalario(nuevosalario);
+              //System.out.println(this.empleados[i]);
             }
         }
     }
 
+    //AUMENTO SALARIO POR DEPARTAMENTO
     public void aumnetoSalarioDepartamento(double incremento , String departamento){
         for(int i=0 ;this.empleados.length>i;i++){
             if(this.empleados[i]!=null){
                 if(this.empleados[i].getDepartamento().equals(departamento)) {
-                    this.empleados[i].setSalario(((this.empleados[i].getSalario() / 100) * incremento) + this.empleados[i].getSalario());
+                    double nuevosalario = ((this.empleados[i].getSalario()/100)*incremento)+this.empleados[i].getSalario();
+                    this.empleados[i].setSalario(nuevosalario);
+                  //  System.out.println(this.empleados[i]);
                 }
             }
         }
     }
 
+    //MUESTRA EMPLEADO DE DEPARTAMENTO
     public void empleadosDepartamento(String departamento){
         for(int i=0 ;this.empleados.length>i;i++){
             if(this.empleados[i]!=null){
@@ -159,4 +186,44 @@ public class Empresa {
             }
         }
     }
+
+    //MUESTRA EMPLEADOS POR DNI
+    public Empleado buscarPorDni(String dni){
+        boolean condicion=false;
+        int posicion = 0;
+        for(int i=0 ;this.empleados.length>i;i++){
+            if(this.empleados[i]!=null){
+                if(this.empleados[i].getDni().equals(dni)) {
+                    System.out.println(this.empleados[i]);
+                    condicion=true;
+                }
+            }
+        }
+        if(condicion){
+            return this.empleados[posicion];
+        }else{
+            return null;
+        }
+    }
+
+    //ELIMINA EMPLEADOS POR DNI
+    public boolean borrarPorDni(String dni){
+        boolean condicion=false;
+
+        for(int i=0 ;this.empleados.length>i;i++){
+            if(this.empleados[i]!=null){
+                if(this.empleados[i].getDni().equals(dni)) {
+                    System.out.println("Se borrara: "+this.empleados[i]);
+                    this.empleados[i]=null;
+                    condicion=true;
+                }
+            }
+        }
+        if(condicion){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
