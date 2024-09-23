@@ -1,0 +1,10 @@
+Manzana, 1.20, Fruta fresca y crujiente
+Leche, 0.99, Leche entera pasteurizada
+Pan, 1.50, Pan integral sin conservantes
+Huevos, 2.30, Docena de huevos orgánicos
+Queso, 3.80, Queso cheddar madurado
+Cereal, 4.50, Cereal integral con miel
+Zanahoria, 0.70, Zanahorias frescas de la huerta
+Yogur, 1.80, Yogur natural sin azúcar
+Jugo de Naranja, 2.50, Jugo de naranja recién exprimido
+Pasta, 1.10, Pasta de trigo sarraceno

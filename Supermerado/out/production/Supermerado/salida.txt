@@ -1,0 +1,57 @@
+productos 2: 
+[Producto{nombre='Zanahoria', precio=0.7, descripcion='Zanahorias frescas de la huerta'},
+ Producto{nombre='Leche', precio=0.99, descripcion='Leche entera pasteurizada'},
+ Producto{nombre='Pasta', precio=1.1, descripcion='Pasta de trigo sarraceno'},
+ Producto{nombre='Manzana', precio=1.2, descripcion='Fruta fresca y crujiente'},
+ Producto{nombre='Pan', precio=1.5, descripcion='Pan integral sin conservantes'},
+ Producto{nombre='Yogur', precio=1.8, descripcion='Yogur natural sin azúcar'},
+ Producto{nombre='Huevos', precio=2.3, descripcion='Docena de huevos orgánicos'},
+ Producto{nombre='Jugo de Naranja', precio=2.5, descripcion='Jugo de naranja recién exprimido'},
+ Producto{nombre='Queso', precio=3.8, descripcion='Queso cheddar madurado'},
+ Producto{nombre='Cereal', precio=4.5, descripcion='Cereal integral con miel'}]productos: 
+Producto{nombre='Zanahoria', precio=0.7, descripcion='Zanahorias frescas de la huerta'}
+Producto{nombre='Leche', precio=0.99, descripcion='Leche entera pasteurizada'}
+Producto{nombre='Pasta', precio=1.1, descripcion='Pasta de trigo sarraceno'}
+Producto{nombre='Manzana', precio=1.2, descripcion='Fruta fresca y crujiente'}
+Producto{nombre='Pan', precio=1.5, descripcion='Pan integral sin conservantes'}
+Producto{nombre='Yogur', precio=1.8, descripcion='Yogur natural sin azúcar'}
+Producto{nombre='Huevos', precio=2.3, descripcion='Docena de huevos orgánicos'}
+Producto{nombre='Jugo de Naranja', precio=2.5, descripcion='Jugo de naranja recién exprimido'}
+Producto{nombre='Queso', precio=3.8, descripcion='Queso cheddar madurado'}
+Producto{nombre='Cereal', precio=4.5, descripcion='Cereal integral con miel'}
+Contadas: 
+de=4
+jugo=1
+con=1
+fruta=1
+orgánicos=1
+trigo=1
+docena=1
+conservantes=1
+frescas=1
+sarraceno=1
+entera=1
+integral=2
+pasta=1
+sin=2
+fresca=1
+pan=1
+azúcar=1
+pasteurizada=1
+natural=1
+naranja=1
+leche=1
+cheddar=1
+miel=1
+crujiente=1
+queso=1
+exprimido=1
+yogur=1
+cereal=1
+la=1
+madurado=1
+recién=1
+y=1
+huevos=1
+zanahorias=1
+huerta=1
