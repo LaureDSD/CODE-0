@@ -1,0 +1,747 @@
+
+imports...
+
+// Clase ////////////////////////////////////
+public class "Main" {}
+
+// Main /////////////////////////////////////
+public static void "main" (String[] agrs){}
+
+// compareTo ////////////////////////////////
+** iplements Comparable<"Objeto">
+
+public int compareTo(Objeto "objeto"){
+	if("this.valor1").equals("Objeto.getValor1"){
+		if("this.valor2"== "Objeto.getValor2"){
+			return Integer.compare("this.valor2","Objeto.getValor2")
+		}
+		return "this.valor1".compareTo("Objeto.getValor1")
+	}
+}
+
+public int compareTo(Objeto "obejeto") {
+        return this.valor1.equals(c.getValo1()) ? Integer.compare(this.valor2, c.getvalor2()): this.valor1.compareTo(c.getValor1());
+    }
+
+// INTERESANTE SIN COMPARE TO ////////////////////////////
+**EL ORDEN DE THIS."ALGO" on "ALGO" AFECTA A SU ORDEN
+
+List<Persona> mayoresDeEdad = personas.stream()
+                .filter(persona -> persona.getEdad() > 18)
+                .sorted((p1, p2) -> {
+                    int lastNameComparison = p1.getApellido().compareTo(p2.getApellido());
+                    if (lastNameComparison != 0) {
+                        return lastNameComparison;
+                    }
+                    int firstNameComparison = p1.getNombre().compareTo(p2.getNombre());
+                    if (firstNameComparison != 0) {
+                        return firstNameComparison;
+                    }
+                    return Integer.compare(p2.getEdad(), p1.getEdad());
+                })
+                .collect(Collectors.toList());
+
+        mayoresDeEdad.forEach(System.out::println);
+
+// INTERESANTE COMPARE TO //////////////////
+**EL ORDEN DE THIS."ALGO" on "ALGO" AFECTA A SU ORDEN
+
+@Override
+    public int compareTo(Persona otraPersona) {
+        int lastNameComparison = this.apellido.compareTo(otraPersona.getApellido());
+        if (lastNameComparison != 0) {
+            return lastNameComparison;
+        }
+        int firstNameComparison = this.nombre.compareTo(otraPersona.getNombre());
+        if (firstNameComparison != 0) {
+            return firstNameComparison;
+        }
+        return Integer.compare(otraPersona.getEdad(), this.edad); // Orden descendente de edad
+    }
+
+
+// Exception ////////////////////////////////
+class ExcepcionPersonalizada extends Exception {
+    public ExcepcionPersonalizada(String texto) {
+        super(texto);
+    }
+}
+
+try {
+    // acciones..
+    // contenido..
+} catch (Exception e) {
+    throw new ExcepcionPersonalizada(e.getMessage());
+}
+
+// string //////////////////////////////////
+
+ public String miMetodo() {
+        return "texto" + super.toString() + "texto" + valor1 + "texto" + valor2;
+    }
+
+// enum ///////////////////////////////////
+
+public enum "enum" {
+ENUM1(1,"text"),ENUM2(2,"text");
+private final int "numero";
+priate final strig "texto";
+
+**Constructor & etters
+} 
+
+// interface //////////////////////////////
+interface MiInterface {
+    void metodo();
+}
+
+class Implementacion implements MiInterface {
+    @Override
+    public void metodo() {
+        // implementación
+    }
+}
+
+// iterator //////////////////////////////
+
+Iterator<Objeto> iterator = "this.lista".iterator();
+while (iterator.hasNext()) {
+    Objeto nombre = iterator.next();
+    nombre.remove();
+}
+
+// mapEntry //////////////////////////////
+
+
+for (Map.Entry<Key, Value> entry : "hashmap".entrySet()) {
+    entry.getKey();
+    entry.getValue();
+}
+
+// lectura && escritura ficheros /////////
+
+BufferedWriter writer = new BufferedWriter(new FileWriter("ruta", true));
+writer.write("texto");
+writer.newLine();
+writer.close();
+
+BufferedReader reader = new BufferedReader(new FileReader("ruta"));
+String linea;
+while ((linea = reader.readLine()) != null) {
+    // tokenizer/sout/etc..
+}
+reader.close();
+
+// split & tokenizer //////////////////////
+
+String[] spliter = "linea".split(" ");
+
+StringTokenizer tokenizer = new StringTokenizer(linea, " ");
+while (tokenizer.hasMoreTokens()) {
+    String token = tokenizer.nextToken();
+    if (token.equals("buscado")) {
+        System.out.println(token);
+        valor1 = tokenizer.nextToken();
+        valor2 = Integer.parseInt(tokenizer.nextToken());
+    }
+}
+
+// Binarios ///////////////////////////////
+
+DataInputStream dataIn = new DataInputStream(new FileInputStream("Ruta"));
+dataIn.writeUTF();
+dataIn.writeInt();
+dataIn.close();
+
+DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("Ruta"));
+dataOut.readUTF();
+dataOut.readInt();
+dataOut.close();
+
+// case ///////////////////////////////////
+
+switch (opcion) {
+    case 1 -> {
+        // Contenido multiple
+    }
+    case 2 -> {
+        // contenido simple
+    }
+    default -> {
+        // contenido simple
+    }
+}
+
+// instanceOf //////////////////////////////
+
+if (objeto instanceof Objeto) {
+    // lógica
+}
+
+// Lists //////////////////////////////////
+
+list.indexOf(objeto);
+list.remove(objeto);
+
+
+// remove if //////////////////////////////
+
+list.removeIf(n -> n % 2 == 0);
+list.removeIf(objeto -> objeto.getEdad() < 18);
+
+// XTRAS //////////////////////////////////
+
+ indexOf(), lastIndexOf(), startsWith(), endsWith(), equals(), equalsIgnoreCase(), contains()
+
+// CREAR FICHEROS /////////////////////////
+
+File directorio = new File("directorio");
+        if (!directorio.exists()) {
+            directorio.mkdir();
+        }
+
+// MOSTRAR DIRECTORIO //////////////////////
+
+ Path directorio = Paths.get("directorio");
+            Files.walk(directorio)
+                 .filter(Files::isRegularFile)
+                 .forEach(System.out::println);
+
+// BUSCAR //////////////////////////////////
+
+String cadena = "Hola, mundo!";
+System.out.println(cadena.indexOf("mundo")); // Índice de la primera ocurrencia
+System.out.println(cadena.startsWith("Hola")); // Comienza con
+System.out.println(cadena.endsWith("mundo!")); // Termina con
+System.out.println(cadena.equals("Hola, mundo!")); // Igualdad
+System.out.println(cadena.equalsIgnoreCase("HOLA, MUNDO!")); // Igualdad ignorando mayúsculas
+
+
+// PATTERN EN TEXTO
+
+cadena = "La fecha de hoy es 12/05/2022";
+Pattern patron = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+Matcher matcher = patron.matcher(cadena);
+if (matcher.find()) {
+    System.out.println("Fecha encontrada: " + matcher.group());
+}
+
+// BINARIOS ///////////////////////////////////
+
+public class ManejoFicherosBinarios {
+    public static void main(String[] args) {
+        try {
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("datos.dat"));
+            outputStream.writeObject("Hola mundo");
+            outputStream.writeInt(123);
+            outputStream.close();
+
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("datos.dat"));
+            String texto = (String) inputStream.readObject();
+            int numero = inputStream.readInt();
+            inputStream.close();
+
+            System.out.println("Texto: " + texto);
+            System.out.println("Número: " + numero);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+///////////////////////////////////////////Expresion regular y extras/////////////////////////////////////////////////
+
+//Valida un dni:
+dni= teclado.nextLine();
+        if (dni.matches("[0-9]{8}[A-za-z]")){
+            System.out.println("dni correcto: "+dni);
+        }
+
+// Reemplaza todo lo que no sea una letra minúscula o mayúscula por nada:
+palabra = palabra.replaceAll("[^a-zA-Z]", "");
+
+// Redonderar:
+precio=Math.round(precio * 100) / 100d;
+
+//Format en sout:
+System.out.println("El total asciende a " + String.format("%.2f",miCarrito.importeTotal())+" euros");
+
+
+//Tomar valor aleatorio de un enum:
+Random a = new Random();
+          this.valor=Valor.values()[a.nextInt(0,Valor.values().length)];
+
+//////////////////////////////////////////////LocalDate//////////////////////////////////////////////
+
+->Crear fechas
+LocalDate fecha1=LocalDate.of(2023,7,21);
+        LocalDate fecha2=LocalDate.now();
+
+->Obtener la diferencia de dias entre 2 fechas;
+long dias = DAYS.between(fecha1, fecha2);
+
+->Mostrar fecha formateada
+System.out.println(fecha2.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+
+->Mostrar fecha formateada para repetir multiples veces
+DateTimeFormatter formatoFecha=DateTimeFormatter.ofPattern("dd-MM-yyyy");
+System.out.println(fecha2.format(formatoFecha));
+
+
+//////////////////////////////////////////////Arraylist//////////////////////////////////////////////
+
+->Importar:
+import java.util.ArrayList;
+
+->Crear:
+ArrayList<Elemento> nombre = new ArrayList<>();
+
+->Añade objetos al array 
+.add(objeto);
+
+->Añade objetos al array en la posicion deseada desplazando todos los demas
+.add( posicion, elemento);
+
+->vacia el Array
+.clear() 
+
+->Devuelve true o false si esta o no esta en el array
+.contains(Objeto)
+
+->Regesa el elemneto de posicion indicada
+.get(posicion)
+
+->Busca posicion del elemento
+.indexOF(elemto)
+
+->si esta vacio
+.ISEMPTY()
+
+->Borra elemento indicado
+.REMOVE(elemnto)
+
+->Borra posiion indicada
+.REMOVE(posicion)
+
+->Borra con condicion
+.removeif(condicion)
+
+->Sobrescribe posicion con elemento
+.SET(posicion, emelemento)
+
+->Indica tamano array
+.SIZE()
+
+->Pasa arraylist a string
+.TOARRAY()
+
+
+/////////////////////////////////////////EXTRA_ArrayList///////////////////////////////////////////////////
+
+Para multiples valores , podemos usar for, foreach y while(este recomendado para buscar )
+
+if(arraylis.contains(elemento)){
+resgresa posicion = arraylis.indexof(elemento)
+podemos borrarlo? arraylist.remove(posicion)
+podemos borrarlo? arraylist.remove(elemento)
+o
+podemos usar if? arrraylist.removeif(elmento.getValor>2)
+}
+
+en este caso es mejor usar iterradores
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ITERATORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Iterator iteratdor = this.nombre.iterator();
+
+ while(iterador.hasNext()) {
+Disco nombre = (Elemento)iterador.next();
+elemento.remove()
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\COLLECTIONS_SHORT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+->Usaremos para iniciar e usao de collections:
+public class ClaseOrdenar implements Comparable<ClaseOrdenar>
+
+->Asimismo, anadiremos el compareTo:
+
+->Para numeros:
+public int compareTo(Persona p) {
+    return Integer.compare(edad,p.getEdad());
+}
+
+->Para elemtno:
+public int compareTo(ClaseComparar cc) {
+return (this.nombre).compareTo(cc.getNombre());
+}
+
+->Para comparar por palo y despues por valor en elemento carta:
+public int compareTo(Carta c) {
+        return this.palo.equals(c.getPalo()) ? this.valor.compareTo(c.getValor()) : this.palo.compareTo(c.getPalo());
+    }
+
+public int compareTo(Carta g) {
+          if(this.palo.equals(g.getPalo())) {
+               return (this.valor).compareTo(g.getValor());
+          }
+          return (this.palo).compareTo(g.getPalo());
+
+
+
+->Ordenar array list sin implements Comparable<Objeto>:
+Collections.sort(Nome_Arraylist,Comparator.comparing(Objeto::getvalor));
+
+->A la inversa: 
+Collections.sort(Nome_Arraylist,Comparator.comparing(Objeto::getvalor).reversed());
+
+->Mezclar o contenido do Arraylist:
+Collections.shuffle(Arraylist);
+
+->Devolve o dato mas grande:
+Collections.max(Arraylist);
+
+->Devolve o dato mas pequeno:
+Collections.min(Arraylist);
+
+->Podemos anadir equals como extra:
+public boolean equals(ClaseComparar cc) {
+return (this.nombre).equals(cc.getNombre());
+}
+
+
+
+////////////////////////////////////////TREESETS//////////////////////////////////////////////
+
+
+->Ordenar treesets cuando se crean:
+	-En orden inversa:
+	TreeSet<Integer> numeros=new TreeSet<>(Comparator.reverseOrder());
+
+	-Ordenar treset de objetos por un atributo en concreto.
+	TreeSet<Objeto> cousas=new TreeSet<>(Comparator.comparing(Objeto::getPrecio));
+
+	-Ordenar treset de objetos por un atributo en concreto en orden inversa.
+	TreeSet<Objeto> cousas=new TreeSet<>(Comparator.comparing(Objeto::getPrecio).reversed());
+
+Ejemplos:
+TreeSet<Producto> productos;
+        //productos = new TreeSet<>();
+        //productos = new TreeSet<>(Comparator.reverseOrder());
+        //productos = new TreeSet<>(Comparator.comparing(Producto::getNombre));
+        //productos = new TreeSet<>(Comparator.comparingDouble(Producto::getPrecio));
+        //productos = new TreeSet<>(Comparator.comparing(Producto::getNombre).reversed());
+        //productos = new TreeSet<>(Comparator.comparingDouble(Producto::getPrecio).reversed());
+
+->Anadir
+.add()
+
+->Tomar
+.get()
+
+
+////////////////////////////////////////////HashMaps//////////////////////////////////////////////////
+
+Importar:
+import java.util.HashMap;
+
+Crear:
+ HashMap<ElementoClave, ElementoValor> nombre = new HashMap<>();
+
+->Obtiene la clave
+.get()
+
+->Introduce valores
+.Put(Clave, valor)
+
+->Regresa todas las claves
+.keyset()
+
+->Regresa todos los valores
+.values()
+
+->regresa keys y valores
+.entrySet()
+
+->Confirma si existe o no la claves
+ContainsKey(clave)
+
+->Regresa la clave de un valor
+.getKey(valor)
+
+->Regresa el valor de una clave
+.getValue(Clave)
+
+->Recorrer hashmap
+for (Map.Entry<key,value> key_value: nombre.entrySet()) {
+	System.out.println(key_value);
+ 	**(key_value.getKey())
+	**(key_value.getValue())
+}
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// RUTAS FICHEROS //////////////////////////////
+
+Path ruta = Paths.get("directorio/subdirectorio/archivo.txt");
+System.out.println("Nombre del fichero: " + ruta.getFileName());
+System.out.println("Directorio padre: " + ruta.getParent());
+System.out.println("Ruta absoluta: " + ruta.toAbsolutePath());
+System.out.println("Ruta normalizada: " + ruta.normalize());
+
+
+// STRING FORMAT /////////////////////////////////
+
+public class FormatoCadenas {
+    public static void main(String[] args) {
+        String nombre = "Juan";
+        int edad = 30;
+        double altura = 1.75;
+        String mensaje = String.format("Nombre: %s, Edad: %d, Altura: %.2f", nombre, edad, altura);
+        System.out.println(mensaje);
+    }
+}
+
+// STRING BUILDER Y BUFFER /////////////////////
+
+public class ManipulacionStringBuilder {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Hola");
+        sb.append(" ");
+        sb.append("mundo");
+        System.out.println(sb.toString()); // "Hola mundo"
+
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("Java");
+        buffer.insert(0, "¡");
+        buffer.append(" es genial!");
+        System.out.println(buffer.toString()); // "¡Java es genial!"
+    }
+}
+
+// LOGICA ANADIR Y BORRAR DIRECTORIOS /////////////////
+
+
+public class CreacionEliminacionDirectorios {
+    public static void main(String[] args) {
+        File directorio = new File("nuevo_directorio");
+        if (!directorio.exists()) {
+            if (directorio.mkdir()) {
+                System.out.println("Directorio creado exitosamente");
+            } else {
+                System.out.println("Error al crear el directorio");
+            }
+        } else {
+            if (directorio.delete()) {
+                System.out.println("Directorio eliminado exitosamente");
+            } else {
+                System.out.println("Error al eliminar el directorio");
+            }
+        }
+    }
+}
+
+
+// VALIDAR CORREOS O DNI ///////////////////
+
+public class ValidacionCorreoElectronico {
+    public static void main(String[] args) {
+        String correo = "usuario@example.com";
+        Pattern patron = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+        Matcher matcher = patron.matcher(correo);
+        if (matcher.matches()) {
+            System.out.println("Correo electrónico válido");
+        } else {
+            System.out.println("Correo electrónico inválido");
+        }
+    }
+}
+
+
+
+// INVERTIR CADENA //////////////////////
+
+public class ReversoCadena {
+    public static void main(String[] args) {
+        String cadena = "Java es genial!";
+        StringBuilder reverso = new StringBuilder(cadena).reverse();
+        System.out.println("Cadena original: " + cadena);
+        System.out.println("Cadena al revés: " + reverso);
+    }
+}
+
+// CONTAR PALABRAS /////////////////////
+
+HashMap<String, Integer> frecuencia = new HashMap<>();
+            //Fracuencia de palabras
+            for (Producto producto : productos) {
+		//Array en el que se busca
+                String[] contar = producto.getDescripcion().split(" ");
+
+                for (int i = 0; i < contar.length; i++) {
+                    if (frecuencia.containsKey(contar[i].trim().toLowerCase())) {
+                        frecuencia.put(contar[i].trim().toLowerCase(), frecuencia.get(contar[i]) + 1);
+                    } else {
+                        frecuencia.put(contar[i].trim().toLowerCase(), 1);
+                    }
+                }
+		//Array en el que se busca
+            }
+
+            for (Map.Entry key_value : frecuencia.entrySet()) {
+                System.out.println(key_value);
+            }
+
+// COPIAR FICHEROS /////////////////
+
+public class OperacionesArchivos {
+    public static void main(String[] args) {
+        Path origen = Paths.get("origen.txt");
+        Path destino = Paths.get("destino.txt");
+
+        try {
+            // Copiar archivo
+            Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+
+            // Mover archivo
+            Files.move(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+
+            // Eliminar archivo
+            Files.delete(destino);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// FILTROS ///////////////
+
+public class UsoStreams {
+    public static void main(String[] args) {
+        List<String> nombres = Arrays.asList("Ana", "Juan", "Pedro", "Maria");
+
+        // Filtrar nombres que empiezan con 'A'
+        List<String> filtrados = nombres.stream()
+                                        .filter(nombre -> nombre.startsWith("A"))
+                                        .collect(Collectors.toList());
+
+        filtrados.forEach(System.out::println);
+    }
+}
+
+// FECHAS ////////////////////
+
+public static void main(String[] args) {
+        // Fecha y hora actual
+        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now();
+        LocalDateTime fechaHoraActual = LocalDateTime.now();
+
+        System.out.println("Fecha actual: " + fechaActual);
+        System.out.println("Hora actual: " + horaActual);
+        System.out.println("Fecha y hora actual: " + fechaHoraActual);
+
+        // Formateo de fecha y hora
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String fechaFormateada = fechaHoraActual.format(formatter);
+        System.out.println("Fecha y hora formateada: " + fechaFormateada);
+
+        // Parseo de fecha y hora
+        String fechaTexto = "25-12-2020 15:30:00";
+        LocalDateTime fechaHoraParseada = LocalDateTime.parse(fechaTexto, formatter);
+        System.out.println("Fecha y hora parseada: " + fechaHoraParseada);
+    }
+
+// CONEXION BASE DE DATOS ////////////
+
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/mi_base_datos";
+        String usuario = "usuario";
+        String contraseña = "contraseña";
+
+        try (Connection conexion = DriverManager.getConnection(url, usuario, contraseña)) {
+            String consulta = "SELECT * FROM mi_tabla";
+            try (Statement stmt = conexion.createStatement()) {
+                ResultSet rs = stmt.executeQuery(consulta);
+                while (rs.next()) {
+                    System.out.println("ID: " + rs.getInt("id") + ", Nombre: " + rs.getString("nombre"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+// Interfaz y labdas //////////////////////
+
+interface Operacion {
+    int aplicar(int a, int b);
+}
+
+public class UsoLambdas {
+    public static void main(String[] args) {
+        Operacion suma = (a, b) -> a + b;
+        Operacion multiplicacion = (a, b) -> a * b;
+
+        System.out.println("Suma: " + operar(5, 3, suma));
+        System.out.println("Multiplicación: " + operar(5, 3, multiplicacion));
+    }
+
+    public static int operar(int a, int b, Operacion operacion) {
+        return operacion.aplicar(a, b);
+    }
+}
+
+//REEMPLAZAR PALABRAS CON TILDDE POR NORMALES /////////////////////////////////////
+
+private static String convertir(String palabra) {
+        String conTilde = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ";
+        String sinTilde = "aaaeeeiiiooouuunAAAEEEIIIOOOUUU";
+        String cambiada = palabra;
+
+        if(conTilde.contains(String.valueOf(palabra.trim().charAt(0)))){
+            //Quitar espacios, reemplazar
+            cambiada = palabra.trim().replace(
+                    //Busca Original
+                    palabra.charAt(0),
+                            //Busca sustituta en la posicion
+                            sinTilde.charAt(conTilde.indexOf(palabra.charAt(0)))
+                    );
+        }
+        /*
+        for (int i=0; i<conTilde.length(); i++) {
+            cambiada = cambiada.replace(conTilde.charAt(i), sinTilde.charAt(i));
+        }
+         */
+        return cambiada;
+    }
+
+// Primera a mayuscual ///////////////////////////
+
+String nombre = "hola mundo cruel 99";
+        StringBuilder nombreNuevo = new StringBuilder();
+        String[] separar  = nombre.split(" ");
+        for(String s : separar) {
+            nombreNuevo.append(s.substring(0, 1).toUpperCase()).append(s.substring(1).toLowerCase()).append(" ");
+        }
+        nombre=String.valueOf(nombreNuevo.toString().trim());
+        System.out.println("test"+nombre);
+
+// COLORES ////////////////////////////////
+
+RESET = "\u001B[0m", VERDE = "\u001B[32m" , AMARILLO = "\u001B[33m", ROJO = "\u001B[31m", AZUL ="\u001B[34m",COLOR ="\u001B[35m";

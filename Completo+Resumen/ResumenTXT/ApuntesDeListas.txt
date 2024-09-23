@@ -1,0 +1,228 @@
+
+///////////////////////////////////////////Expresion regular y extras/////////////////////////////////////////////////
+
+//Valida un dni:
+dni= teclado.nextLine();
+        if (dni.matches("[0-9]{8}[A-za-z]")){
+            System.out.println("dni correcto: "+dni);
+        }
+
+// Reemplaza todo lo que no sea una letra minúscula o mayúscula por nada:
+palabra = palabra.replaceAll("[^a-zA-Z]", "");
+
+// Redonderar:
+precio=Math.round(precio * 100) / 100d;
+
+//Format en sout:
+System.out.println("El total asciende a " + String.format("%.2f",miCarrito.importeTotal())+" euros");
+
+
+//Tomar valor aleatorio de un enum:
+Random a = new Random();
+          this.valor=Valor.values()[a.nextInt(0,Valor.values().length)];
+
+//////////////////////////////////////////////LocalDate//////////////////////////////////////////////
+
+->Crear fechas
+LocalDate fecha1=LocalDate.of(2023,7,21);
+        LocalDate fecha2=LocalDate.now();
+
+->Obtener la diferencia de dias entre 2 fechas;
+long dias = DAYS.between(fecha1, fecha2);
+
+->Mostrar fecha formateada
+System.out.println(fecha2.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+
+->Mostrar fecha formateada para repetir multiples veces
+DateTimeFormatter formatoFecha=DateTimeFormatter.ofPattern("dd-MM-yyyy");
+System.out.println(fecha2.format(formatoFecha));
+
+
+//////////////////////////////////////////////Arraylist//////////////////////////////////////////////
+
+->Importar:
+import java.util.ArrayList;
+
+->Crear:
+ArrayList<Elemento> nombre = new ArrayList<>();
+
+->Añade objetos al array 
+.add(objeto);
+
+->Añade objetos al array en la posicion deseada desplazando todos los demas
+.add( posicion, elemento);
+
+->vacia el Array
+.clear() 
+
+->Devuelve true o false si esta o no esta en el array
+.contains(Objeto)
+
+->Regesa el elemneto de posicion indicada
+.get(posicion)
+
+->Busca posicion del elemento
+.indexOF(elemto)
+
+->si esta vacio
+.ISEMPTY()
+
+->Borra elemento indicado
+.REMOVE(elemnto)
+
+->Borra posiion indicada
+.REMOVE(posicion)
+
+->Borra con condicion
+.removeif(condicion)
+
+->Sobrescribe posicion con elemento
+.SET(posicion, emelemento)
+
+->Indica tamano array
+.SIZE()
+
+->Pasa arraylist a string
+.TOARRAY()
+
+
+/////////////////////////////////////////EXTRA_ArrayList///////////////////////////////////////////////////
+
+Para multiples valores , podemos usar for, foreach y while(este recomendado para buscar )
+
+if(arraylis.contains(elemento)){
+resgresa posicion = arraylis.indexof(elemento)
+podemos borrarlo? arraylist.remove(posicion)
+podemos borrarlo? arraylist.remove(elemento)
+o
+podemos usar if? arrraylist.removeif(elmento.getValor>2)
+}
+
+en este caso es mejor usar iterradores
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ITERATORS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Iterator iteratdor = this.nombre.iterator();
+
+ while(iterador.hasNext()) {
+Disco nombre = (Elemento)iterador.next();
+elemento.remove()
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\COLLECTIONS_SHORT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+->Usaremos para iniciar e usao de collections:
+public class ClaseOrdenar implements Comparable<ClaseOrdenar>
+
+->Asimismo, anadiremos el compareTo:
+
+->Para numeros:
+public int compareTo(Persona p) {
+    return Integer.compare(edad,p.getEdad());
+}
+
+->Para elemtno:
+public int compareTo(ClaseComparar cc) {
+return (this.nombre).compareTo(cc.getNombre());
+}
+
+->Para comparar por palo y despues por valor en elemento carta:
+public int compareTo(Carta c) {
+        return this.palo.equals(c.getPalo()) ? this.valor.compareTo(c.getValor()) : this.palo.compareTo(c.getPalo());
+    }
+
+public int compareTo(Carta g) {
+          if(this.palo.equals(g.getPalo())) {
+               return (this.valor).compareTo(g.getValor());
+          }
+          return (this.palo).compareTo(g.getPalo());
+
+
+
+->Ordenar array list sin implements Comparable<Objeto>:
+Collections.sort(Nome_Arraylist,Comparator.comparing(Objeto::getvalor));
+
+->A la inversa: 
+Collections.sort(Nome_Arraylist,Comparator.comparing(Objeto::getvalor).reversed());
+
+->Mezclar o contenido do Arraylist:
+Collections.shuffle(Arraylist);
+
+->Devolve o dato mas grande:
+Collections.max(Arraylist);
+
+->Devolve o dato mas pequeno:
+Collections.min(Arraylist);
+
+->Podemos anadir equals como extra:
+public boolean equals(ClaseComparar cc) {
+return (this.nombre).equals(cc.getNombre());
+}
+
+
+
+////////////////////////////////////////TREESETS//////////////////////////////////////////////
+
+
+->Ordenar treesets cuando se crean:
+	-En orden inversa:
+	TreeSet<Integer> numeros=new TreeSet<>(Comparator.reverseOrder());
+
+	-Ordenar treset de objetos por un atributo en concreto.
+	TreeSet<Objeto> cousas=new TreeSet<>(Comparator.comparing(Objeto::getPrecio));
+
+	-Ordenar treset de objetos por un atributo en concreto en orden inversa.
+	TreeSet<Objeto> cousas=new TreeSet<>(Comparator.comparing(Objeto::getPrecio).reversed());
+
+Ejemplos:
+TreeSet<Producto> productos;
+        //productos = new TreeSet<>();
+        //productos = new TreeSet<>(Comparator.reverseOrder());
+        //productos = new TreeSet<>(Comparator.comparing(Producto::getNombre));
+        //productos = new TreeSet<>(Comparator.comparingDouble(Producto::getPrecio));
+        //productos = new TreeSet<>(Comparator.comparing(Producto::getNombre).reversed());
+        //productos = new TreeSet<>(Comparator.comparingDouble(Producto::getPrecio).reversed());
+
+->Anadir
+.add()
+
+->Tomar
+.get()
+
+
+////////////////////////////////////////////HashMaps//////////////////////////////////////////////////
+
+Importar:
+import java.util.HashMap;
+
+Crear:
+ HashMap<ElementoClave, ElementoValor> nombre = new HashMap<>();
+
+->Obtiene la clave
+.get()
+
+->Introduce valores
+.Put(Clave, valor)
+
+->Regresa todas las claves
+.keyset()
+
+->Regresa todos los valores
+.values()
+
+->regresa keys y valores
+.entrySet()
+
+->Confirma si existe o no la claves
+ContainsKey(clave)
+
+->Regresa la clave de un valor
+.getKey(valor)
+
+->Regresa el valor de una clave
+.getValue(Clave)
+
+->Recorrer hashmap
+for (Map.Entry key_value: nombre.entrySet()) {
+	System.out.println(key_value);
+ 	**(key_value.getKey())
+	**(key_value.getValue())
+}
