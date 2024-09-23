@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widget del Tiempo (Tema Oscuro)</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #121212;
+        background-image: url(recursos/fondos/5443scr_76fedd33e5e4540.jpg);
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+    }
+    .widget-tiempo {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 20px;
+        padding: 10px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        text-align: center;
+    }
+    .icono-tiempo {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+    .temperatura {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: -20px;
+        margin-bottom: 5px;
+    }
+    .ubicacion {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .fecha-hora {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .hora-actual {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+    .fecha {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .icono-termometro {
+        font-size: 24px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+    .pronostico {
+        background-color: rgba(255, 255, 255, 0.5);
+        background-image: url(recursos/fondos/depositphotos_308814794-stock-photo-blue-sky-shining-stars-clouds.jpg);
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: darken;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .dia-pronostico {
+        text-align: center;
+        margin-right: 13px; 
+        margin-left: 13px; 
+    }
+    .nombre-dia {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #fff;
+    }
+    .icono-pequeno {
+        font-size: 24px;
+        margin-bottom: 0px;
+        color: #fff;
+    }
+    .temperatura-pequena {
+        font-size: 10px;
+        margin-bottom: 3px;
+        color: #fff;
+    }
+</style>
+    
+</head>
+<body>
+<div class="widget-tiempo">
+    <div class="hora-actual" id="hora"></div>
+    <div class="fecha-hora" id="fecha"></div>
+    <div class="icono-tiempo"><img src="recursos/107.png" /></div>
+    <div class="temperatura">25°C</div>
+    <div class="ubicacion">Ourense</div>
+    
+    <div class="pronostico">
+        <div class="dia-pronostico">
+            <div class="icono-pequeno"><img src="recursos/107.png" width="30" height="30" /></div>
+            <div class="nombre-dia">Lun</div>
+            <div class="temperatura-pequena">25°C</div>
+        </div>
+        <div class="dia-pronostico">
+            <div class="icono-pequeno"><img src="recursos/107.png" width="30" height="30" /></div>
+            <div class="nombre-dia">Mar</div>
+            <div class="temperatura-pequena">25°C</div>
+        </div>
+        <div class="dia-pronostico">
+            <div class="icono-pequeno"><img src="recursos/107.png" width="30" height="30" /></div>
+            <div class="nombre-dia">Mié</div>
+            <div class="temperatura-pequena">25°C</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function actualizarHoraYFecha() {
+        var ahora = new Date();
+        var hora = ahora.getHours();
+        var minutos = ahora.getMinutes();
+        var segundos = ahora.getSeconds();
+        // Formatea los minutos y segundos para que tengan siempre 2 dígitos
+        minutos = minutos < 10 ? '0' + minutos : minutos;
+        segundos = segundos < 10 ? '0' + segundos : segundos;
+        // Muestra la hora actual en el formato HH:MM:SS
+        document.getElementById('hora').textContent = hora + ':' + minutos ;
+        
+        var dia = ahora.getDate();
+        var mes = ahora.getMonth() + 1;
+        var año = ahora.getFullYear();
+        // Formatea el día y mes para que tengan siempre 2 dígitos
+        dia = dia < 10 ? '0' + dia : dia;
+        mes = mes < 10 ? '0' + mes : mes;
+        // Muestra la fecha actual en el formato DD/MM/YYYY
+        document.getElementById('fecha').textContent = dia + '/' + mes + '/' + año;
+    }
+
+    // Actualiza la hora y la fecha cada segundo
+    setInterval(actualizarHoraYFecha, 1000);
+</script>
+
+</body>
+</html>

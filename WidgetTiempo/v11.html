@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widget del Tiempo (Tema Oscuro)</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #121212;
+        background-image: url(recursos/fondos/5443scr_76fedd33e5e4540.jpg);
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+    }
+    .widget-tiempo {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 20px;
+        padding: 10px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        text-align: center;
+    }
+    .icono-tiempo {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+    .temperatura {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: -20px;
+        margin-bottom: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 5px;
+    }
+    .ubicacion {
+        font-size: 16px;
+        margin-bottom: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 5px;
+    }
+    .fecha-hora {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .hora-actual {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 5px;
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+    .fecha {
+        color: black;
+        font-size: 14px;
+        margin-bottom: 10px;
+        
+    }
+    .icono-termometro {
+        font-size: 24px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+    .pronostico {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .dia-pronostico {
+        text-align: center;
+        margin-right: 8px; 
+        margin-left: 8px; 
+        
+    }
+    .nombre-dia {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #fff;
+    }
+    .icono-pequeno {
+        font-size: 24px;
+        margin-bottom: 0px;
+        color: #fff;
+    }
+    .temperatura-pequena {
+        font-size: 10px;
+        margin-bottom: 3px;
+        color: #fff;
+    }
+</style>
+    
+</head>
+<body>
+<div class="widget-tiempo">
+    <div class="hora-actual">16:22</div>
+    <div class="fecha-hora">Sábado, 15 de mayo</div>
+    <div class="icono-tiempo"><img src="recursos/107.png" /></div>
+    <div class="temperatura">25°C</div>
+    <div class="ubicacion">Ourense</div>
+    
+    <div class="pronostico">
+        <div class="dia-pronostico">
+            <div class="icono-pequeno"><img src="recursos/107.png" width="30" height="30" /></div>
+            <div class="nombre-dia">Lun</div>
+            <div class="temperatura-pequena">25°C</div>
+        </div>
+        <div class="dia-pronostico">
+            <div class="icono-pequeno"><img src="recursos/107.png" width="30" height="30" /></div>
+            <div class="nombre-dia">Mar</div>
+            <div class="temperatura-pequena">25°C</div>
+        </div>
+        <div class="dia-pronostico">
+            <div class="icono-pequeno"><img src="recursos/107.png" width="30" height="30" /></div>
+            <div class="nombre-dia">Mié</div>
+            <div class="temperatura-pequena">25°C</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Base.css">
+<title>Widget del Tiempo</title>
+
+<style type="text/css">
+    body {
+        font-family: Cursive,Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url(recursos/fondos/depositphotos_308814794-stock-photo-blue-sky-shining-stars-clouds.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    .weather-widget {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 20px;
+        padding: 10px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 #080808;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        text-align: center;
+    }
+    .weather-icon {
+        font-size: 48px;
+        margin-bottom: 2px;
+    }
+    .temperature {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: -10px;
+        margin-bottom: 5px;
+    }
+    .location {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    .date-time {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .hour {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+    .date {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .thermometer-icon {
+        font-size: 24px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+    .forecast {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    .forecast-day {
+        flex-grow: 1;
+        text-align: center;
+        margin-right: 5px; 
+        margin-left: 5px; 
+    }
+    .day-name {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .small-icon {
+        font-size: 24px;
+        margin-bottom: 0px;
+    }
+    .small-temperature {
+        font-size: 9px;
+        margin-bottom: 5px;
+    }
+</style>
+    
+</head>
+<body>
+<div class="weather-widget">
+    <div class="hour"id="hora"></div>
+    <div class="date-time"id="fecha"></div>
+    <div class="weather-icon"><img src="recursos/107.png" width="100" height="80" /></div>
+    <div class="temperature">25°C</div>
+    <div class="location">Ourense</div>
+    <div class="forecast">
+        <div class="forecast-day">
+            <div class="small-icon"><img src="recursos/107.png" width="50" height="40" /></div>
+            <div class="day-name">Lun</div>
+            <div class="small-temperature">25°C</div>
+        </div>
+        <div class="forecast-day">
+            <div class="small-icon"><img src="recursos/107.png" width="50" height="40" /></div>
+            <div class="day-name">Mar</div>
+            <div class="small-temperature">25°C</div>
+        </div>
+        <div class="forecast-day">
+            <div class="small-icon"><img src="recursos/107.png" width="50" height="40" /></div>
+            <div class="day-name">Mer</div>
+            <div class="small-temperature">25°C</div>
+        </div>
+    </div>
+</div>
+    
+    
+<script>
+    function actualizarHoraYFecha() {
+        var ahora = new Date();
+        var hora = ahora.getHours();
+        var minutos = ahora.getMinutes();
+        minutos = minutos < 10 ? '0' + minutos : minutos;
+        document.getElementById('hora').textContent = hora + ':' + minutos ;
+        
+        var dia = ahora.getDate();
+        var mes = ahora.getMonth() + 1;
+        var año = ahora.getFullYear();
+        dia = dia < 10 ? '0' + dia : dia;
+        mes = mes < 10 ? '0' + mes : mes;
+        document.getElementById('fecha').textContent = dia + '/' + mes + '/' + año;
+    }
+
+    // Actualiza la hora y la fecha cada segundo
+    setInterval(actualizarHoraYFecha, 1000);
+</script>
+
+</body>
+</html>
