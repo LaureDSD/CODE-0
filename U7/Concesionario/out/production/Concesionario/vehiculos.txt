@@ -1,0 +1,5 @@
+VEHICULOS SAN MAMEDE
+Coche, TESLA, Model 3,  52000,  5, ELECTRICO
+Coche,  AUDI, A4, 38000, 4, GASOLINA
+Furgoneta, FORD, Transit, 26000, 5900
+Furgoneta, MERCEDES, Vito, 40500, 6500
